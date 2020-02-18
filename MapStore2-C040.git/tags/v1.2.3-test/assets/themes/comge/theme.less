@@ -1,0 +1,57 @@
+@import "../../../MapStore2/web/client/themes/default/base.less";
+@import "../../../MapStore2/web/client/themes/default/icons.less";
+@import "../../../MapStore2/web/client/themes/default/bootstrap-theme.less";
+@import "../../../MapStore2/web/client/themes/default/ms2-theme.less";
+@import "../../../MapStore2/web/client/themes/default/variables.less";
+@import "variables.less";
+.maps-search.MapSearchBar {
+    padding-top: 75px;
+}
+#dashboard-view-container{
+    #home-button {
+        float: right;
+    }
+}
+
+#page-cantieri {
+    .mapLoadingMessage {
+        position: absolute;
+    }
+}
+.centered {
+    text-align: center;
+    padding-bottom: 10px;
+    button {
+        text-align: center;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.login-label-ms {
+    position: relative;
+    h4 {
+        &:after, &:before{
+            content: "";
+            display: block;
+            width: 90px;
+            height: 1px;
+            background: #000;
+            margin-left: 15px;
+            margin-right: 15px;
+            top: 50%;
+            position: absolute;
+        }
+        span  {
+            background: #fff;
+        }
+        &:after {
+            right: 0;
+        }
+        &:before {
+            left: 0;
+        }
+}
+
+}

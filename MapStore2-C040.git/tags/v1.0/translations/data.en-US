@@ -1,0 +1,35 @@
+{
+    "locale": "en-US",
+    "messages": {
+        "search": {
+            "s_priority_info": "Used to sort search results, higher values first. Default services has priority 5 and 6"
+        },
+        "cantieriGrid": {
+            "toolbar": {
+                "save": "Save",
+                "reset": "Reset",
+                "polygonSelectionTooltip": "Draw a polygon on the map",
+                "pointSelectionTooltip": "Click on the elements to select them",
+                "areas": "Areas",
+                "elements": "Elements",
+                "deleteRow": "Delete this area"
+            },
+            "error":{
+                "maxFeatures": "The drawn area is too big and it is not accepted. Please, draw a smaller area."
+            },
+            "notification":{
+                "confirm": "Ok",
+                "removeFeatureError": "An error occurred while deleting this area.",
+                "resetCantieriFeaturesError": "An error occurred while clearing the grids.",
+                "errorQueryElements": "There are no elements in the drawn area.",
+                "timeoutError": "The request has not been completed.",
+                "errorLoadCantieriAreas": "Error on loading the areas.",
+                "errorDrawingAreas": "Error on drawing the areas.",
+                "noFeaturesSelected": "There are no elements in the clicked point.",
+                "elementAlreadyPresent": "The selected element is already present.",
+                "errorSavingData": "Error on saving data.",
+                "successSaving": "Data have been saved correctly."
+            }
+        }
+    }
+}

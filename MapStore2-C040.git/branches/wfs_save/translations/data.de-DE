@@ -1,0 +1,19 @@
+{
+    "locale": "de-DE",
+    "messages": {
+        "cantieriGrid": {
+            "toolbar": {
+                "save": "Einreichen",
+                "reset": "Zurücksetzen",
+                "polygonSelectionTooltip": "Zeichne ein Polygon auf der Karte",
+                "pointSelectionTooltip": "Klicken Sie auf die Elemente, um sie auszuwählen",
+                "areas": "Bereiche",
+                "elements": "Elemente",
+                "deleteRow": "Löschen Sie diesen Bereich"
+            },
+            "error":{
+                "maxFeatures": "Der gestaltete Bereich ist zu groß und werden entfernt. Bitte zeichnen Sie einen kleineren Bereich"
+            }
+        }
+    }
+}

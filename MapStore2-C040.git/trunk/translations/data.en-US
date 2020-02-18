@@ -1,0 +1,66 @@
+{
+    "locale": "en-US",
+    "messages": {
+        "login": {
+            "mapstore-credential": "Or login with MapStore credentials",
+            "spid-title": "Login with SPID"
+        },
+        "collapse": "Hide full description",
+        "expand": "Show full decription",
+        "search": {
+            "s_priority_info": "Used to sort search results, higher values first. Default services has priority 5 and 6"
+        },
+        "cantieriGrid": {
+            "toolbar": {
+                "save": "Save",
+                "reset": "Reset",
+                "polygonSelectionTooltip": "Draw a polygon on the map",
+                "pointSelectionTooltip": "Click on the elements to select them",
+                "areas": "Areas",
+                "elements": "Elements",
+                "deleteRow": "Delete this area"
+            },
+            "error":{
+                "maxFeatures": "The drawn area is too big and it is not accepted. Please, draw a smaller area."
+            },
+            "notification":{
+                "confirm": "Ok",
+                "removeFeatureError": "An error occurred while deleting this area.",
+                "resetCantieriFeaturesError": "An error occurred while clearing the grids.",
+                "errorQueryElements": "There are no elements in the drawn area.",
+                "timeoutError": "The request has not been completed.",
+                "errorLoadCantieriAreas": "Error on loading the areas.",
+                "errorDrawingAreas": "Error on drawing the areas.",
+                "noFeaturesSelected": "There are no elements in the clicked point.",
+                "elementAlreadyPresent": "The selected element is already present.",
+                "errorSavingData": "Error on saving data.",
+                "successSaving": "Data have been saved correctly."
+            }
+        },
+        "geocollectViewer":{
+            "images": {
+                "label": "Label",
+                "size": "Size",
+                "lastModified": "Last modified",
+                "modal": {
+                    "closeButtonText": "Close"
+                }
+            }
+        },
+        "user": {
+            "spidLogin": "SPID Login"
+        },
+        "mapImport": {
+            "dropZone": {
+                "infoSupported": "<p><small>Supported configuration files: MapStore2 legacy format<br />Supported vector layer files: shapefiles (must be contained in zip archives), KML/KMZ, GeoJSON or GPX, reference systems Epsg: 3003, Epsg: 4326)</small></p>"
+            }
+        },
+        "shapefile": {
+            "placeholder": "Drag files here or click to select vector files to be imported. (Supported files: SHAPEFILES contained in zip archives, KML / KMZ and GPX, reference systems Epsg: 3003, Epsg: 4326)"
+        },
+        "layerProperties": {
+            "legenderror": "Legend not available at current scale"
+        },
+        "geoNetworkLink": "GeoNetwork"
+    }
+}

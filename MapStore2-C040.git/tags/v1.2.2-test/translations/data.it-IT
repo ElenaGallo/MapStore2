@@ -1,0 +1,100 @@
+{
+    "locale": "it-IT",
+    "messages": {
+        "collapse": "Nascondi descrizione completa",
+        "expand": "Mostra descrizione completa",
+        "search": {
+            "s_priority_info": "Usato per ordinare i risultati, i valori più alti vengono visualizzati per primi. I servizi di default (ricerca strade/indirizzi e nominatim) hanno rispettivamente priorità 6 e 5"
+        },
+        "cantieriGrid": {
+            "toolbar": {
+                "save": "Salva",
+                "reset": "Reset",
+                "polygonSelectionTooltip": "Disegna un poligono sulla mappa",
+                "pointSelectionTooltip": "Clicca sugli elementi per selezionarli",
+                "areas": "Aree",
+                "elements": "Elementi",
+                "deleteRow": "Elimina quest'area"
+            },
+            "error":{
+                "maxFeatures": "L'area disegnata è troppo grande e verrà rimossa. Per favore, disegna un'area più piccola"
+            },
+            "notification":{
+                "confirm": "Ok",
+                "removeFeatureError": "Non è stato possibile rimuovere quest'area.",
+                "resetCantieriFeaturesError": "Non è stato possibile resettare le griglie.",
+                "timeoutError": "La richiesta non è stata completata.",
+                "errorQueryElements": "Non ci sono elementi nell'area disegnata.",
+                "errorLoadCantieriAreas": "Non è stato possibile caricare le aree.",
+                "errorDrawingAreas": "Impossibile aggiungere l'area disegnata.",
+                "noFeaturesSelected": "Non ci sono elementi nel punto cliccato.",
+                "elementAlreadyPresent": "L'elemento selezionato è già presente nella tabella degli elementi.",
+                "errorSavingData": "c'è stato un errore durante il salvataggio",
+                "successSaving": "I dati sono stati salvati correttamente."
+            }
+        },
+        "geocollectViewer":{
+            "images": {
+                "label": "Etichetta",
+                "size": "Dimensione",
+                "lastModified": "Ultima modifica",
+                "modal": {
+                    "closeButtonText": "Chiudi"
+                }
+            }
+        },
+        "tutorial": {
+            "intro": {
+                "title": "Benvenuto su MapStore2",
+                "text": "Fai un breve tour delle funzionalità della mappa cliccando su \"Avanti\". Spunta la checkbox sotto per evitare di visualizzare questo messaggio tutte le volte che apri una mappa. Il tutorial è comunque accessibile dal menu in alto a destra."
+            },
+            "drawerMenu": {
+                "title": "Menu principale",
+                "text": "Da questo menu puoi trovare informazioni e strumenti per controllare i layer"
+            },
+            "searchBar": {
+                "title": "Barra di ricerca",
+                "text": "Qui puoi scrivere un indirizzo di un luogo per trovarlo. esempio:  'Via Garibaldi'. Puoi anche digitare le coordinate in questo formato: 43.87,10.20"
+            },
+            "home": {
+                "title": "Home",
+                "text": "Da questo pulsante puoi tornare alla home page dell'applicazione"
+            },
+            "searchButton": {
+                "title": "Ricerca",
+                "text": "Cliccando su questo pulsante si può aprire la barra per cercare tramite indirizzo."
+            },
+            "burgerMenu": {
+                "title": "Menu delle opzioni",
+                "text": "In questo menu puoi trovare opzioni, impostazioni e aiuti"
+            },
+            "fullscreen": {
+                "title": "Schermo Intero",
+                "text": "Cliccando su questo pulsante puoi passare alla modalità di visualizzazione a schermo intero"
+            },
+            "identifyButton": {
+                "title": "Info",
+                "text": "Premendo questo pulsante si attiva lo strumento di \"Map Info\". Cliccando sulla mappa con lo strumento attivato si possono ottenere informazioni riguardanti il punto cliccato."
+            },
+            "introCesium": {
+                "title": "Tutorial visualizzatore 3D",
+                "text": "Fai un breve tour delle funzionalità della mappa 3D cliccando su Avanti. Spunta la checkbox sotto per evitare di visualizzare questo messaggio tutte le volte che apri una mappa."
+            }
+        },
+        "user": {
+            "spidLogin": "SPID Login"
+        },
+        "mapImport": {
+            "dropZone": {
+                "infoSupported": "<p> <small> File di configurazione supportati: formato legacy di MapStore2<br /> File di livello vettoriale supportati: shapefile (devono essere contenuti in archivi zip), KML / KMZ, GPX o GeoJSON, sistemi di riferimento Epsg:3003, Epsg:4326 </small> </p>"
+            }
+        },
+        "shapefile": {
+            "placeholder": "Trascina qui i file o fai click per selezionare i file vettoriali da importare.(file supportati: SHAPEFILES contenuti in archivi zip, KML/KMZ e GPX, sistemi di riferimento Epsg:3003, Epsg:4326)"
+        },
+        "layerProperties": {
+            "legenderror": "Legenda non disponibile alla scala attuale"
+        },
+        "geoNetworkLink": "GeoNetwork"
+    }
+}

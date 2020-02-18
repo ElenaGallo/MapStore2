@@ -1,0 +1,17 @@
+.record-item .thumb{
+    float: left;
+    width: 150px;
+    min-height: 100px;
+    margin-right: 20px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+@media(max-width:500px) {
+    .record-item .thumb {
+        display: none;
+    }
+}

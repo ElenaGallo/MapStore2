@@ -1,0 +1,21 @@
+div.geocollect-sop .panel-title {
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #078AA3;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+div.geocollect-sop .panel-title a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@media (min-width: 768px) {
+  #geocollect-images-modal .modal-dialog {
+    margin-top: 50px;
+  }
+}

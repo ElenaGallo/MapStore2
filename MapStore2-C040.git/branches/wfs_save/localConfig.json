@@ -1,0 +1,514 @@
+{
+  "geoStoreUrl": "rest/geostore/",
+  "printUrl": "/geoserver-test/pdf/info.json",
+  "wmsURL": "/geoserver-test/wms",
+  "proxyUrl": {
+    "url": "/MapStore2/proxy/?url=",
+    "useCORS": ["http://nominatim.openstreetmap.org", "https://nominatim.openstreetmap.org"]
+  },
+  "bingApiKey": "AhuXBu7ipR1gNbBfXhtUAyCZ6rkC5PkWpxs2MnMRZ1ZupxQfivjLCch22ozKSCAn",
+  "translationsPath": ["MapStore2/web/client/translations","translations"],
+  "mapquestApiKey": "__API_KEY_MAPQUEST__",
+  "initialMapFilter": "",
+  "ignoreMobileCss" : true,
+  "useAuthenticationRules": true,
+  "authenticationRules": [
+    {
+      "urlPattern": ".*geostore.*",
+      "method": "basic"
+    }, {
+      "urlPattern": "\\/geoserver.*",
+      "method": "authkey"
+    }
+  ],
+  "defaultMapOptions": {
+    "cesium": {
+        "navigationTools": true,
+        "flyTo": true,
+        "defaultFlightOptions": {
+          "duration": 1
+        },
+        "terrainProvider": {
+            "type": "cesium",
+            "url": "https://assets.agi.com/stk-terrain/world",
+            "requestVertexNormals": true
+        }
+    }
+  },
+  "plugins": {
+        "mobile": [{
+        "name": "Map",
+        "cfg": {
+          "tools": ["locate"]
+        }
+            }, "Version", "DrawerMenu",
+            {
+                "name": "BackgroundSelector",
+                "cfg": {
+                    "dimensions": {
+                    "bottom": "50px",
+                    "side": 65,
+                    "sidePreview": 65,
+                    "frame": 3,
+                    "margin": 5,
+                    "label": false,
+                    "vertical": true
+                   }
+                }
+            },
+            {
+        "name": "Identify",
+        "showIn": ["Settings"],
+        "cfg": {
+          "style": {
+            "position": "absolute",
+            "width": "100%",
+            "bottom": "0px",
+            "zIndex": 1023,
+            "maxHeight": "70%",
+            "marginBottom": 0
+          },
+          "draggable": false,
+          "collapsible": true,
+          "viewerOptions": {
+            "container": "{context.ReactSwipe}",
+                        "header": "{context.SwipeHeader}",
+                        "collapsible": false
+          },
+          "bodyClass": "mobile-feature-info"
+        }
+            }, {
+      "name": "Locate",
+      "override": {
+        "Toolbar": {
+          "alwaysVisible": true
+        }
+      }
+    }, "Home", "TOC", {
+        "name": "Tutorial",
+        "cfg": {
+            "preset": "default_mobile_tutorial"
+        }
+            }, {
+      "name": "Settings",
+      "cfg": {
+        "wrap": true
+      }
+    },
+    {
+      "name": "MousePosition",
+      "cfg": {
+        "id": "mapstore-mouseposition-mobile"
+      }
+            }, {
+      "name": "Search",
+      "cfg": {
+        "withToggle": ["max-width: 768px", "min-width: 768px"],
+        "searchOptions": {
+          "services": [{
+              "type": "wfs",
+              "priority": 2,
+              "displayName": "${properties.NOMEVIA}",
+              "subTitle": " (seleziona per cercare numero civico)",
+              "options": {
+                "url": "/geoserver-test/wfs",
+                "typeName": "SITGEO:V_ASTE_STRADALI_TOPONIMO_SUB",
+                "queriableAttributes": ["NOMEVIA"],
+                "sortBy": "ID",
+                "srsName": "EPSG:4326",
+                "maxFeatures": 20,
+                "blacklist": ["via", "viale", "piazza"]
+              },
+              "nestedPlaceholder": "Digita numero civico o località",
+              "then": [{
+                    "type": "wfs",
+                    "priority": 1,
+                    "displayName": "${properties.DESVIA} ${properties.TESTO}",
+                    "subTitle": " (ricerca numero civico)",
+                    "searchTextTemplate": "${properties.TESTO}",
+                    "options": {
+                    "staticFilter": " AND COD_STRADA = '${properties.COD_STRADA}'",
+                      "url": "/geoserver-test/wfs",
+                      "typeName": "SITGEO:CIVICI_COD_TOPON",
+                      "queriableAttributes": ["TESTO"],
+                      "srsName": "EPSG:4326",
+                      "maxFeatures": 10
+                    }
+                }]
+          }, {
+              "type": "nominatim",
+              "searchTextTemplate": "${properties.display_name}",
+              "options": {
+                "polygon_geojson": 1,
+                "limit": 3
+              }
+          }]
+        }
+      }
+    }, {
+      "name": "Toolbar",
+      "id": "NavigationBar",
+      "cfg": {
+        "id": "navigationBar"
+      }
+    }, {
+      "name": "Toolbar",
+      "id": "IdentifyBar",
+      "stateSelector": "identify",
+      "cfg": {
+        "id": "identifyBar"
+      },
+      "isDefault": false
+            }, "ZoomAll", {
+      "name": "MapLoading",
+      "override": {
+        "Toolbar": {
+          "alwaysVisible": true
+        }
+      }
+            }, {
+                "name": "FullScreen",
+                "override": {
+                    "Toolbar": {
+                        "alwaysVisible": false
+                    }
+                }
+    }, {
+        "name": "GlobeViewSwitcher",
+        "override": {
+            "Toolbar": {
+                "alwaysVisible": false
+            }
+        }
+      }, "Login",
+            "OmniBar", "BurgerMenu", "Expander", "GlobeViewSwitcher"
+  ],
+        "desktop": ["Map", "HelpLink", "Share", "DrawerMenu", {
+        "name": "BackgroundSelector",
+                        "cfg" :{
+                    "bottom": "50px"
+                        }
+       }, {
+       "name": "Identify",
+       "showIn": ["IdentifyBar", "Settings"],
+       "cfg": {
+         "viewerOptions": {
+             "container": "{context.ReactSwipe}",
+             "header": "{context.SwipeHeader}",
+             "collapsible": false,
+             "headerOptions": {
+                "useButtons": true
+             }
+          },
+          "glyph": "info-sign"
+       }
+    },
+    "Attribution",
+    {
+        "name": "Locate",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+    }, "Home", "FeatureGrid", {
+        "name": "TOC",
+        "cfg": {
+          "activateQueryTool": true,
+          "layerOptions": {
+            "legendOptions": {
+              "legendContainerStyle": {
+                "overflowX": "auto"
+            },
+            "legendStyle": {
+              "maxWidth": "250%"
+            }
+              }
+          }
+        }
+            }, "Tutorial", {
+                "name": "Measure"
+            }, "Print", "ShapeFile", {
+      "name": "Settings",
+      "cfg": {
+        "wrap": true
+      }
+    }, {
+        "name": "MetadataExplorer",
+        "cfg": {
+          "wrap": true,
+          "initialCatalogURL": {
+            "csw": "/geonetwork/srv/ita/csw",
+            "wms": "/geoserver-test/wms",
+            "wmts": "/geoserver-test/gwc/service/wmts"
+          }
+        }
+    }, "MousePosition", {
+        "name": "Search",
+        "cfg": {
+          "searchOptions": {
+            "services": [{
+                "type": "wfs",
+                "priority": 2,
+                "displayName": "${properties.NOMEVIA}",
+                "subTitle": " (seleziona per cercare numero civico)",
+                "options": {
+                  "url": "/geoserver-test/wfs",
+                  "typeName": "SITGEO:V_ASTE_STRADALI_TOPONIMO_SUB",
+                  "queriableAttributes": ["NOMEVIA"],
+                  "sortBy": "ID",
+                  "srsName": "EPSG:4326",
+                  "startIndex": 0,
+                  "maxFeatures": 20,
+                  "blacklist": ["via", "viale", "piazza"]
+                },
+                "nestedPlaceholder": "Digita numero civico o località",
+                "then": [{
+                      "type": "wfs",
+                      "priority": 1,
+                      "displayName": "${properties.DESVIA} ${properties.TESTO}",
+                      "subTitle": " (ricerca numero civico)",
+                      "searchTextTemplate": "${properties.TESTO}",
+                      "options": {
+			                  "staticFilter": " AND COD_STRADA = '${properties.COD_STRADA}'",
+                        "sortBy": "NUMERO",
+                        "url": "/geoserver-test/wfs",
+                        "typeName": "SITGEO:CIVICI_COD_TOPON",
+                        "queriableAttributes": ["TESTO"],
+                        "srsName": "EPSG:4326",
+                        "maxFeatures": 30,
+                        "startIndex": 0
+                      }
+                  }]
+            }, {
+                "type": "nominatim",
+                "searchTextTemplate": "${properties.display_name}",
+                "options": {
+                  "polygon_geojson": 1,
+                  "limit": 3
+                }
+            }]
+          },
+          "withToggle": ["max-width: 768px", "min-width: 768px"]
+        }
+    }, {
+      "name": "Toolbar",
+      "id": "NavigationBar",
+      "cfg": {
+        "id": "navigationBar"
+      }
+    }, {
+      "name": "Toolbar",
+      "id": "IdentifyBar",
+      "stateSelector": "identify",
+      "cfg": {
+        "id": "identifyBar",
+        "glyph": "info-sign"
+      },
+      "isDefault": false
+    },
+            "ZoomAll", {
+      "name": "MapLoading",
+      "override": {
+        "Toolbar": {
+          "alwaysVisible": true
+        }
+      }
+            }, {
+        "name": "Snapshot",
+        "cfg": {
+          "wrap": true
+        }
+            }, {
+      "name":"ZoomIn",
+      "override": {
+        "Toolbar": {
+          "alwaysVisible": true
+        }
+      }
+            }, {
+      "name":"ZoomOut",
+      "override": {
+        "Toolbar": {
+          "alwaysVisible": true
+        }
+      }
+    },
+            "OmniBar", "Login", "Save", "SaveAs", "BurgerMenu", "Expander", "Undo", "Redo", "FullScreen", "GlobeViewSwitcher", "SearchServicesConfig"
+  ],
+  "embedded": [{
+          "name": "Map",
+          "cfg": {
+              "tools": ["locate"]
+          }
+        }, {
+          "name": "DrawerMenu",
+          "hide": "{!(request.query && request.query.forceDrawer)}"
+          }, {
+                  "name": "BackgroundSelector",
+                  "cfg": {
+                      "dimensions": {
+                      "side": 65,
+                      "sidePreview": 65,
+                      "frame": 3,
+                      "margin": 5,
+                      "label": false,
+                      "vertical": true
+                     }
+                  }
+          }, {
+            "name": "Identify",
+            "cfg": {
+                "style": {
+                    "position": "absolute",
+                    "width": "100%",
+                    "bottom": "0px",
+                    "zIndex": 1010,
+                    "maxHeight": "70%",
+                    "marginBottom": 0
+                },
+                "draggable": false,
+                "collapsible": true,
+                "viewerOptions": {
+                    "container": "{context.ReactSwipe}",
+                    "header": "{context.SwipeHeader}",
+                    "collapsible": false
+                },
+                "bodyClass": "mobile-feature-info",
+                "glyph": "info-sign"
+            }
+        }, {
+            "name": "ZoomAll",
+            "override": {
+                "Toolbar": {
+                    "alwaysVisible": true
+                }
+            }
+        }, {
+            "name": "Locate",
+            "override": {
+                "Toolbar": {
+                    "alwaysVisible": true
+                }
+            }
+            }, "TOC", {
+            "name": "Settings",
+            "cfg": {
+                "wrap": true
+            }
+        }, {
+            "name": "Search",
+            "cfg": {
+                "withToggle": ["max-width: 768px", "min-width: 768px"]
+            }
+        }, {
+            "name": "Toolbar",
+            "id": "NavigationBar",
+            "cfg": {
+                "id": "navigationBar"
+            }
+        }, {
+            "name": "MapLoading",
+            "override": {
+                "Toolbar": {
+                    "alwaysVisible": true
+                }
+            }
+        },
+        "OmniBar", {
+            "name": "GoFull",
+            "override": {
+                "Toolbar": {
+                    "alwaysVisible": true
+                }
+            }
+        }
+    ],
+    "featureviewer": [{
+        "name": "Map",
+        "cfg": {
+          "tools": [ "locate", "draw", "highlight"]
+        }
+      }, {
+        "name":"Share",
+        "cfg": {
+            "showAPI": false,
+            "embedOptions": {
+              "showTOCToggle": false
+            },
+            "shareUrlRegex": "(h[^#]*)(embedded.html){0,1}#(\\/featureviewer\\/[^\\/]*\\/[A-Za-z0-9]*)",
+            "shareUrlReplaceString": "$1$2#$3"
+        }
+      }, {
+         "name": "Identify",
+         "showIn": ["IdentifyBar", "Settings"],
+         "cfg": {
+           "viewerOptions": {
+               "container": "{context.ReactSwipe}",
+               "header": "{context.SwipeHeader}",
+               "collapsible": false,
+               "headerOptions": {
+                  "useButtons": true
+               }
+          }
+         }
+      },
+      "Attribution",
+      {
+          "name": "Locate",
+          "override": {
+            "Toolbar": {
+              "alwaysVisible": true
+            }
+          }
+      }, "FeatureGrid", {
+        "name": "Toolbar",
+        "id": "NavigationBar",
+        "cfg": {
+          "id": "navigationBar"
+        }
+      }, {
+        "name": "Toolbar",
+        "id": "IdentifyBar",
+        "stateSelector": "identify",
+        "cfg": {
+          "id": "identifyBar"
+        },
+        "isDefault": false
+      }, "ZoomAll",
+      {
+        "name": "MapLoading",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      },
+      {
+        "name":"ZoomIn",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      },
+      {
+        "name":"ZoomOut",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      },
+      "OmniBar", "Login", "BurgerMenu"
+    ],
+    "common": [{
+      "name": "OmniBar",
+      "cfg": {
+        "className": "navbar shadow navbar-home"
+      }
+    },"ManagerMenu", "Login", "Language"],
+    "maps": [{"name": "Header", "hide": true }, "MapSearch", "CreateNewMap", "Maps", "Footer"],
+    "manager": ["Header", "Redirect", "Manager", "Home", "UserManager", "GroupManager", "Footer"]
+  }
+}

@@ -1,0 +1,250 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>it.geosolutions.MapStore2-C040</groupId>
+        <artifactId>MapStore2-C040-root</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>MapStore2-C040-backend</artifactId>
+    <packaging>jar</packaging>
+    <name>GeoPortale - Comune di Genova - Backend Services</name>
+    <url>http://www.geo-solutions.it</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- ================================================================ -->
+        <!-- JACKSON                                                          -->
+        <!-- ================================================================ -->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <!-- ================================================================ -->
+        <!-- SPRING                                                           -->
+        <!-- ================================================================ -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>org.springframework</groupId> -->
+        <!-- <artifactId>spring-context-support</artifactId> -->
+        <!-- </dependency> -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+        <!-- =========================================================== -->
+        <!-- LOGGING                                                     -->
+        <!-- =========================================================== -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>org.slf4j</groupId> -->
+        <!-- <artifactId>jcl-over-slf4j</artifactId> -->
+        <!-- </dependency> -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+
+        <!-- SiRAC -->
+        <!-- We are using versions 9999 because they are all custom jars to be used as-is -->
+        <dependency>
+            <groupId>it.people.sirac</groupId>
+            <artifactId>sirac-sso-lib</artifactId>
+            <version>9999</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/sirac-sso-lib.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>it.people.sirac</groupId>
+            <artifactId>sirac-lib</artifactId>
+            <version>9999</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/sirac_lib.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>it.people.sirac</groupId>
+            <artifactId>fe-framework</artifactId>
+            <version>9999</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/fe_framework.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>it.people.sirac</groupId>
+            <artifactId>xmlbeans_authdataholder</artifactId>
+            <version>9999</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/xmlbeans_authdataholder.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>it.people.sirac</groupId>
+            <artifactId>xmlbeans_serviceprofile</artifactId>
+            <version>9999</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/xmlbeans_serviceprofile.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>it.people.sirac</groupId>
+            <artifactId>xmlbeans-1.0.3_serviziinfrastrutturali_sirac_b003_authdataholder</artifactId>
+            <version>9999</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/xmlbeans-1.0.3_serviziinfrastrutturali_sirac_b003_authdataholder.jar</systemPath>
+        </dependency>
+
+        <!-- This is very similar to org.apache.taglibs.standard:1.0.6
+             it may be a customization of the JBoss fork  -->
+        <dependency>
+            <groupId>it.people.sirac</groupId>
+            <artifactId>standard_jstl10</artifactId>
+            <version>9999</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/standard_jstl10.jar</systemPath>
+        </dependency>
+
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+
+        <!-- GeoStore -->
+        <dependency>
+        	<groupId>it.geosolutions.geostore</groupId>
+        	<artifactId>geostore-model</artifactId>
+        	<version>1.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>it.geosolutions.geostore</groupId>
+        	<artifactId>geostore-services-api</artifactId>
+        	<version>1.4.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>it.geosolutions.geostore</groupId>
+        	<artifactId>geostore-services-impl</artifactId>
+        	<version>1.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>it.geosolutions.geostore</groupId>
+            <artifactId>geostore-rest-api</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+        <dependency>
+            <groupId>it.geosolutions.geostore</groupId>
+            <artifactId>geostore-rest-impl</artifactId>
+            <version>1.4.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>xfire</groupId>
+            <artifactId>opensaml</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>xmlbeans</groupId>
+            <artifactId>xbean</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>xml-security</groupId>
+            <artifactId>xmlsec</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+
+        <!-- We had to publish this version on the GeoSolutions Maven
+             repository because it is NOT available in any other one -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk14</artifactId>
+            <version>1.30</version>
+        </dependency>
+
+        <!-- This jar is available on SourceForge
+        https://sourceforge.net/projects/jcetaglib/files/cryptolib/cryptolib-1.0/
+             it is published on GeoSolutions Maven repository for convenience -->
+        <dependency>
+            <groupId>net.sourceforge.jcetaglib</groupId>
+            <artifactId>cryptolib</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+    </dependencies>
+
+    <repositories>
+      <repository>
+        <id>geosolutions</id>
+        <name>GeoSolutions Maven Repository</name>
+        <url>http://maven.geo-solutions.it/</url>
+      </repository>
+    </repositories>
+</project>

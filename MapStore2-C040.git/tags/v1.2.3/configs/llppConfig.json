@@ -1,0 +1,16 @@
+{
+  "geoserverUrl": "/geoserver/ows",
+  "serviceRESTUrl": "https://appaltige.comune.genova.it/LFS/rest/cantiere",
+  "toolbar": {
+      "activeTools": ["elementsGrid", "pointSelection"],
+      "inactiveTools": ["areasGrid", "polygonSelection"]
+  },
+  "activeGrid": "elementsGrid",
+  "maxFeatures": 1000,
+  "checkedElements": [],
+  "id": 0,
+  "typology": "cantiere",
+  "geometry_name": "GEOMETRY",
+  "elementsLayerName": "MEDIATORE:V_ELEMENTI_CANTIERI",
+  "areasLayerName": "CANTIERI:AREE_CANTIERE"
+}

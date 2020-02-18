@@ -1,0 +1,122 @@
+{
+  "map": {
+    "projection": "EPSG:900913",
+    "units": "m",
+    "center": {"x": 977941.7266189083, "y": 5517659.964062111, "crs": "EPSG:900913"},
+    "zoom":10,
+    "layers": [
+      {
+        "type": "osm",
+        "title": "Open Street Map",
+        "name": "mapnik",
+        "source": "osm",
+        "group": "background",
+        "visibility": true
+      },
+      {
+        "type": "google",
+        "title": "Google Satellite",
+        "name": "SATELLITE",
+        "source": "google",
+        "group": "background",
+        "visibility": false
+      },
+      {
+        "name":"BASE_CARTOGRAFICA",
+        "title":"BASE_CARTOGRAFICA",
+        "group": "background",
+        "type":"wms",
+        "url":"/geoserver-test/wms",
+        "bbox":
+          {
+          "crs":"EPSG:4326",
+          "bounds":
+            {
+            "minx":"8.664631331583704",
+            "miny":"44.378093234171516",
+            "maxx":"9.096015724443996",
+            "maxy":"44.52038356628868"
+            }
+          },
+        "visibility": false,
+        "singleTile": false,
+        "allowedSRS":
+        {
+          "EPSG:3003": true,
+          "EPSG:3857": true,
+          "EPSG:4326": true,
+          "EPSG:900913": true,
+          "CRS:84": true
+        },
+        "dimensions":[],
+        "params":{}
+      },
+      {
+        "type": "tileprovider",
+        "title": "OpenTopoMap",
+        "provider": "OpenTopoMap",
+        "name": "OpenTopoMap",
+        "source": "OpenTopoMap",
+        "group": "background",
+        "visibility": false
+      },
+      {
+        "format": "image/jpeg",
+        "name": "rv:rv1",
+        "params": {},
+        "singleTile": false,
+        "title": "e-Geos Ortofoto RealVista 1.0",
+        "type": "wms",
+        "group": "background",
+        "thumbURL": "http://www.realvista.it/reflector/open/service?SERVICE=WMS&REQUEST=GetMap&VERSION=1.3.0&LAYERS=rv%3Arv1&STYLES=&FORMAT=image%2Fjpeg&TRANSPARENT=true&HEIGHT=256&WIDTH=256&TILED=true&ZINDEX=2&SRS=EPSG%3A3857&CRS=EPSG%3A3857&BBOX=3757032.814272983,5009377.08569731,5009377.085697311,6261721.35712164",
+        "url": "http://www.realvista.it/reflector/open/service",
+        "visibility": false
+      },
+      {
+        "source": "ol",
+        "group": "background",
+        "title": "Nessuno sfondo",
+        "fixed": true,
+        "type": "empty",
+        "visibility": false,
+        "args": [
+          "Nessuno sfondo", {
+            "visibility": false
+          }
+        ]
+      }, {
+				"id": "V_VINC_SOPRAINT",
+				"search": {
+					"url": "/geoserver-test/wfs",
+					"type": "wfs"
+				},
+				"name": "CORSO_1:V_VINC_SOPRAINT",
+				"opacity": 1,
+				"title": "Vincoli",
+				"type": "wms",
+				"url": "/geoserver-test/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "8.0",
+						"miny": "44.0",
+						"maxx": "11.0",
+						"maxy": "45.0"
+					}
+				},
+				"visibility": true,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:4326": true,
+					"EPSG:900913": true,
+					"CRS:84": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"params": {}
+			}
+    ]
+  }
+}

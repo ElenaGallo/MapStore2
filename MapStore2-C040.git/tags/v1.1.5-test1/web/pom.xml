@@ -1,0 +1,437 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>it.geosolutions.MapStore2-C040</groupId>
+    <artifactId>MapStore2-C040-root</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>MapStore2-C040-web</artifactId>
+  <packaging>war</packaging>
+  <name>GeoPortale - Comune di Genova - WAR</name>
+  <url>http://www.geo-solutions.it</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <!-- ================================================================ -->
+    <!-- GeoPortale - Comune di Genova modules -->
+    <!-- ================================================================ -->
+    <dependency>
+        <groupId>it.geosolutions.MapStore2-C040</groupId>
+        <artifactId>MapStore2-C040-backend</artifactId>
+        <!-- geostore dependencies are already added by MVN WAR plugins
+            When using a snapshot version (e.g. 1.4.2-SNAPSHOT that includes
+            improvements to performances) you can not use them as dependenencies
+            in the backend project (not published on mvn repo). So excluding
+            them here avoids duplication of jars in the final WAR
+        -->
+        <exclusions>
+            <exclusion>
+                <groupId>it.geosolutions.geostore</groupId>
+                <artifactId>geostore-rest-api</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>it.geosolutions.geostore</groupId>
+                <artifactId>geostore-rest-impl</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>it.geosolutions.geostore</groupId>
+                <artifactId>geostore-services-api</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>it.geosolutions.geostore</groupId>
+                <artifactId>geostore-services-impl</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>it.geosolutions.geostore</groupId>
+                <artifactId>geostore-security</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>it.geosolutions.geostore</groupId>
+                <artifactId>geostore-persistence</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>it.geosolutions.geostore</groupId>
+                <artifactId>geostore-model</artifactId>
+            </exclusion>
+      </exclusions>
+        <version>${project.version}</version>
+    </dependency>
+
+    <!-- SiRAC -->
+    <!-- We are using versions 9999 because they are all custom jars to be used as-is -->
+    <dependency>
+        <groupId>it.people.sirac</groupId>
+        <artifactId>sirac-sso-lib</artifactId>
+        <version>9999</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/../backend/libs/sirac-sso-lib.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>it.people.sirac</groupId>
+        <artifactId>sirac-lib</artifactId>
+        <version>9999</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/../backend/libs/sirac_lib.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>it.people.sirac</groupId>
+        <artifactId>fe-framework</artifactId>
+        <version>9999</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/../backend/libs/fe_framework.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>it.people.sirac</groupId>
+        <artifactId>xmlbeans_authdataholder</artifactId>
+        <version>9999</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/../backend/libs/xmlbeans_authdataholder.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>it.people.sirac</groupId>
+        <artifactId>xmlbeans_serviceprofile</artifactId>
+        <version>9999</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/../backend/libs/xmlbeans_serviceprofile.jar</systemPath>
+    </dependency>
+    <dependency>
+        <groupId>it.people.sirac</groupId>
+        <artifactId>xmlbeans-1.0.3_serviziinfrastrutturali_sirac_b003_authdataholder</artifactId>
+        <version>9999</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/../backend/libs/xmlbeans-1.0.3_serviziinfrastrutturali_sirac_b003_authdataholder.jar</systemPath>
+    </dependency>
+
+    <!-- This is very similar to org.apache.taglibs.standard:1.0.6
+         it may be a customization of the JBoss fork  -->
+    <dependency>
+        <groupId>it.people.sirac</groupId>
+        <artifactId>standard_jstl10</artifactId>
+        <version>9999</version>
+        <scope>system</scope>
+        <systemPath>${project.basedir}/../backend/libs/standard_jstl10.jar</systemPath>
+    </dependency>
+    <!-- ================================================================ -->
+    <!-- GeoStore modules -->
+    <!-- ================================================================ -->
+    <dependency>
+      <groupId>it.geosolutions.geostore</groupId>
+      <artifactId>geostore-webapp</artifactId>
+      <version>1.4.2-SNAPSHOT</version>
+      <type>war</type>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>proxy</groupId>
+      <artifactId>http_proxy</artifactId>
+      <version>1.1-SNAPSHOT</version>
+      <type>war</type>
+      <scope>runtime</scope>
+    </dependency>
+    <!-- JUnit -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+
+  <repositories>
+      <!-- GeoSolutions -->
+      <repository>
+          <id>geosolutions</id>
+          <name>GeoSolutions Repository</name>
+          <url>http://maven.geo-solutions.it</url>
+          <snapshots>
+              <enabled>true</enabled>
+          </snapshots>
+      </repository>
+
+      <!-- Apache -->
+      <repository>
+          <id>maven2-repository.dev.java.net</id>
+          <name>Java.net Repository for Maven</name>
+          <url>http://download.java.net/maven/2/</url>
+          <layout>default</layout>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+      </repository>
+
+      <!-- JBoss -->
+      <repository>
+          <id>jboss-repo</id>
+          <name>JBoss Maven2 Repository</name>
+          <url>http://repository.jboss.com/maven2</url>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+      </repository>
+
+      <!-- Spring -->
+      <repository>
+          <id>spring-release</id>
+          <name>Spring Portfolio Release Repository</name>
+          <url>http://maven.springframework.org/release</url>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+      </repository>
+      <repository>
+          <id>spring-external</id>
+          <name>Spring Portfolio External Repository</name>
+          <url>http://maven.springframework.org/external</url>
+          <snapshots>
+              <enabled>false</enabled>
+          </snapshots>
+      </repository>
+
+      <repository>
+          <id>osgeo</id>
+          <name>Open Source Geospatial Foundation Repository</name>
+          <url>http://download.osgeo.org/webdav/geotools/</url>
+          <snapshots>
+              <enabled>true</enabled>
+          </snapshots>
+      </repository>
+  </repositories>
+
+  <build>
+    <finalName>MapStore2</finalName>
+    <plugins>
+        <plugin>
+            <artifactId>maven-resources-plugin</artifactId>
+            <executions>
+                <execution>
+                    <id>LDAP configuration</id>
+                    <phase>process-sources</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <filters>
+                          <filter>${basedir}/ldap.properties</filter>
+                        </filters>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/src/main/resources-filtered/WEB-INF/classes</directory>
+                                <filtering>true</filtering>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>html, configuration files and images</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/..</directory>
+                                <includes>
+                                    <include>*.html</include>
+                                    <include>*.json</include>
+                                    <include>img/*</include>
+                                </includes>
+                                <excludes>
+                                    <exclude>MapStore2/*</exclude>
+                                    <exclude>MapStore2/**/*</exclude>
+                                </excludes>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>js files</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2/dist</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../dist</directory>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>configs</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2/configs</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../configs</directory>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>CSS files</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2/assets</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../assets</directory>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>translations</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2/MapStore2/web/client</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../MapStore2/web/client</directory>
+                                <includes>
+                                    <include>translations/*</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>Genova App translations</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2/</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../</directory>
+                                <includes>
+                                    <include>translations/*</include>
+                                </includes>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>CesiumJS</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2/js/libs/Cesium</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../js/libs/Cesium</directory>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>CesiumJNavigation</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2/MapStore2/web/client/libs/cesium-navigation</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../MapStore2/web/client/libs/cesium-navigation</directory>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+                <execution>
+                    <id>SIRAC libraries</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>copy-resources</goal>
+                    </goals>
+                    <configuration>
+                        <outputDirectory>${basedir}/target/MapStore2/WEB-INF/lib</outputDirectory>
+                        <encoding>UTF-8</encoding>
+                        <resources>
+                            <resource>
+                                <directory>${basedir}/../backend/libs</directory>
+                            </resource>
+                        </resources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.1.1</version>
+            <configuration>
+                <overlays>
+                    <overlay>
+                        <groupId>it.geosolutions.geostore</groupId>
+                        <artifactId>geostore-webapp</artifactId>
+                        <excludes>
+                            <exclude>WEB-INF/lib/commons-logging-*</exclude>
+                        </excludes>
+                    </overlay>
+                    <overlay>
+                        <groupId>proxy</groupId>
+                        <artifactId>http_proxy</artifactId>
+                        <excludes>
+                            <exclude>WEB-INF/lib/commons-codec-*</exclude>
+                            <exclude>WEB-INF/lib/commons-logging-*</exclude>
+                            <exclude>WEB-INF/lib/log4j-*</exclude>
+                        </excludes>
+                    </overlay>
+                </overlays>
+            </configuration>
+        </plugin>
+
+        <!-- Run the application using "mvn jetty:run" -->
+        <plugin>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>maven-jetty-plugin</artifactId>
+            <version>6.1.20</version>
+            <configuration>
+                <webAppConfig>
+                    <contextPath>/MapStore2-C040</contextPath>
+                </webAppConfig>
+                <connectors>
+                    <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                        <port>9191</port>
+                        <maxIdleTime>60000</maxIdleTime>
+                    </connector>
+                </connectors>
+                <reload>manual</reload>
+            </configuration>
+        </plugin>
+    </plugins>
+  </build>
+
+</project>

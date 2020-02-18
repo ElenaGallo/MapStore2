@@ -1,0 +1,52 @@
+{
+    "locale": "de-DE",
+    "messages": {
+        "search": {
+            "s_priority_info": "Wird verwendet, um Suchergebnisse zu sortieren, höhere Werte zuerst. Die Standarddienste haben Vorrang 5 und 6"
+        },
+        "cantieriGrid": {
+            "toolbar": {
+                "save": "Einreichen",
+                "reset": "Zurücksetzen",
+                "polygonSelectionTooltip": "Zeichne ein Polygon auf der Karte",
+                "pointSelectionTooltip": "Klicken Sie auf die Elemente, um sie auszuwählen",
+                "areas": "Bereiche",
+                "elements": "Elemente",
+                "deleteRow": "Löschen Sie diesen Bereich"
+            },
+            "error":{
+                "maxFeatures": "Der gestaltete Bereich ist zu groß und werden entfernt. Bitte zeichnen Sie einen kleineren Bereich"
+            },
+            "notification":{
+                "confirm": "Ok",
+                "removeFeatureError": "Es war nicht möglich, diesen Bereich zu entfernen",
+                "resetCantieriFeaturesError": "Beim Löschen der Raster ist ein Fehler aufgetreten.",
+                "errorQueryElements": "Es sind keine Elemente in der gezeichneten Bereich.",
+                "timeoutError": "Die Anfrage ist noch nicht abgeschlossen.",
+                "errorLoadCantieriAreas": "Fehler auf die Bereiche geladen werden.",
+                "errorDrawingAreas": "Fehler auf die Bereiche zeichnen.",
+                "noFeaturesSelected": "Es ist keine Elemente in dem angeklickten Punkt.",
+                "elementAlreadyPresent": "Das ausgewählte Element ist bereits vorhanden.",
+                "errorSavingData": "Fehler beim Speichern von Daten.",
+                "successSaving": "Die Daten wurden korrekt gespeichert."
+            }
+        },
+        "geocollectViewer":{
+            "images": {
+                "label": "Etikette",
+                "size": "Größe",
+                "lastModified": "Zuletzt bearbeitet",
+                "modal": {
+                    "closeButtonText": "schließen"
+                }
+            }
+        },
+        "shapefile": {
+            "placeholder": "Ziehen Sie Dateien hierher oder klicken Sie, um Vektordateien auszuwählen, die importiert werden sollen. (Unterstützte Dateien: SHAPEFILES in Zip-Archiven, KML / KMZ und GPX, Referenzsysteme Epsg: 3003, Epsg: 4326)"
+        },
+        "layerProperties": {
+            "legenderror": "Die Legende ist im aktuellen Maßstab nicht verfügbar"
+        },
+        "geoNetworkLink": "GeoNetwork"
+    }
+}

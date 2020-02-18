@@ -1,0 +1,28 @@
+
+
+// Follow colors from www.comune.genova.it
+// @ms2-color-text-primary: #ffffff;
+// @ms2-color-primary: #A60809;
+// @ms2-color-info: #7e64a5;
+//
+
+@font-face {
+    font-family: easyreading;
+    src: url(../../fonts/EasyReading.ttf);
+}
+
+/**
+ * Only for map Details
+ * @type {[type]}
+ */
+.ql-editor {
+    font-family: easyreading, 'Raleway', sans-serif;
+    p {
+        line-height: 1.58;
+        // this line height was causing issue #272,
+        // it was adding a scrollbar when the font is EasyReading
+    }
+}
+/** for the whole site
+@font-family-base: easyreading, 'Raleway', sans-serif;
+ */

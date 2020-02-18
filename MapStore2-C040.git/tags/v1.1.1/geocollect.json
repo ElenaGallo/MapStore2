@@ -1,0 +1,226 @@
+{
+	"version": 2,
+	"map": {
+		"center": {
+			"x": 8.973791188778485,
+			"y": 44.457580115445055,
+			"crs": "EPSG:4326"
+		},
+		"maxExtent": [-20037508.34, -20037508.34, 20037508.34, 20037508.34],
+		"projection": "EPSG:900913",
+		"units": "m",
+		"zoom": 11,
+		"layers": [{
+				"id": "mapnik__0",
+				"group": "background",
+				"source": "osm",
+				"name": "mapnik",
+				"title": "Open Street Map",
+				"type": "osm",
+				"visibility": true,
+				"singleTile": false,
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false
+			}, {
+				"id": "SATELLITE__1",
+				"group": "background",
+				"source": "google",
+				"name": "SATELLITE",
+				"title": "Google Satellite",
+				"type": "google",
+				"visibility": false,
+				"singleTile": false,
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false
+			}, {
+				"id": "BASE_CARTOGRAFICA__2",
+				"group": "background",
+				"name": "BASE_CARTOGRAFICA",
+				"title": "BASE_CARTOGRAFICA",
+				"type": "wms",
+				"url": "/geoserver/wms",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "8.664631331583704",
+						"miny": "44.378093234171516",
+						"maxx": "9.096015724443996",
+						"maxy": "44.52038356628868"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3857": true,
+					"EPSG:4326": true,
+					"EPSG:900913": true,
+					"CRS:84": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"params": {}
+			}, {
+				"id": "OpenTopoMap__3",
+				"group": "background",
+				"source": "OpenTopoMap",
+				"name": "OpenTopoMap",
+				"provider": "OpenTopoMap",
+				"title": "OpenTopoMap",
+				"type": "tileprovider",
+				"visibility": false,
+				"singleTile": false,
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false
+			}, {
+				"id": "rv:rv1__4",
+				"format": "image/jpeg",
+				"group": "background",
+				"name": "rv:rv1",
+				"title": "e-Geos Ortofoto RealVista 1.0",
+				"type": "wms",
+				"url": "http://www.realvista.it/reflector/open/service",
+				"visibility": false,
+				"singleTile": false,
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"params": {}
+			}, {
+				"id": "undefined__5",
+				"group": "background",
+				"source": "ol",
+				"title": "Nessuno sfondo",
+				"type": "OpenLayers.Layer",
+				"visibility": false,
+				"singleTile": false,
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false
+			}, {
+				"id": "muro__6",
+				"search": {
+					"url": "http://geocollect.geo-solutions.it:80/geoserver/it.geosolutions/wfs?",
+					"type": "wfs"
+				},
+				"name": "muro",
+				"title": "Muri",
+				"type": "wms",
+				"url": "http://geocollect.geo-solutions.it/geoserver/it.geosolutions/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "8.0",
+						"miny": "44.0",
+						"maxx": "10.0",
+						"maxy": "45.0"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:4326": true,
+					"EPSG:900913": true,
+					"CRS:84": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"params": {}
+			}, {
+				"id": "cens_muri_sop__7",
+				"search": {
+					"url": "http://geocollect.geo-solutions.it:80/geoserver/it.geosolutions/wfs?",
+					"type": "wfs"
+				},
+				"name": "cens_muri_sop",
+				"title": "Sopralluoghi",
+				"type": "wms",
+				"url": "http://geocollect.geo-solutions.it/geoserver/it.geosolutions/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "8.0",
+						"miny": "43.0",
+						"maxx": "12.0",
+						"maxy": "45.0"
+					}
+				},
+				"visibility": true,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:4326": true,
+					"EPSG:900913": true,
+					"CRS:84": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"featureInfo": {
+					"format": "JSON",
+					"viewer": {
+						"type": "Geocollect",
+						"wfsUrl": "http://geocollect.geo-solutions.it/geoserver/it.geosolutions/ows",
+						"baseUrl": "http://geocollect.geo-solutions.it/opensdi2-manager/mvc/fileManager/extJSbrowser?action=get_filelist&folder=",
+            "folder": "/media/cens_muri/",
+            "featureProperty": "my_orig_id"
+					}
+				},
+				"params": {}
+			}, {
+				"id": "cens_muri__8",
+				"search": {
+					"url": "http://geocollect.geo-solutions.it:80/geoserver/it.geosolutions/wfs?",
+					"type": "wfs"
+				},
+				"name": "cens_muri",
+				"opacity": 1,
+				"title": "Segnalazioni Muri",
+				"type": "wms",
+				"url": "http://geocollect.geo-solutions.it/geoserver/it.geosolutions/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "8.0",
+						"miny": "44.0",
+						"maxx": "11.0",
+						"maxy": "45.0"
+					}
+				},
+				"visibility": true,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:4326": true,
+					"EPSG:900913": true,
+					"CRS:84": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"featureInfo": {
+					"format": "JSON",
+					"viewer": {
+						"type": "Geocollect",
+						"wfsUrl": "http://geocollect.geo-solutions.it/geoserver/it.geosolutions/ows",
+						"baseUrl": "http://geocollect.geo-solutions.it/opensdi2-manager/mvc/fileManager/extJSbrowser?action=get_filelist&folder=",
+            "folder": "/media/cens_muri/",
+            "featureProperty": "my_orig_id"
+					}
+				},
+				"params": {}
+			}
+		],
+		"groups": [{
+				"id": "Default",
+				"expanded": true
+			}
+		]
+	}
+}

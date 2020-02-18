@@ -1,0 +1,52 @@
+{
+    "locale": "fr-FR",
+    "messages": {
+        "search": {
+            "s_priority_info": "Utilisé pour trier les résultats de recherche, des valeurs plus élevées en premier. Les services par défaut ont priorité 5 et 6"
+        },
+        "cantieriGrid": {
+            "toolbar": {
+                "save": "Soumettre",
+                "reset": "Réinitialiser",
+                "polygonSelectionTooltip": "Dessinez un polygone sur la carte",
+                "pointSelectionTooltip": "Cliquez sur les éléments pour les sélectionner",
+                "areas": "Zones",
+                "elements": "Éléments",
+                "deleteRow": "Supprimez cette zone"
+            },
+            "error":{
+                "maxFeatures": "La zone conçue est trop grande et sera supprimée. S'il vous plaît, dessiner une zone plus petite"
+            },
+            "notification":{
+                "confirm": "Ok",
+                "removeFeatureError": "Il n'a pas été possible de supprimer ce domaine.",
+                "resetCantieriFeaturesError": "Une erreur s'est produite lors de l'effacement des grilles.",
+                "errorQueryElements": "Il n'y a aucun élément dans la zone tracée.",
+                "timeoutError": "La demande n'a pas été complétée.",
+                "errorLoadCantieriAreas": "Erreur lors du chargement des zones.",
+                "errorDrawingAreas": "Erreur sur le dessin des zones.",
+                "noFeaturesSelected": "Il n'y a aucun élément dans le point cliqué.",
+                "elementAlreadyPresent": "L'élément sélectionné est déjà présent.",
+                "errorSavingData": "Erreur sur la sauvegarde des données.",
+                "successSaving": "Les données ont été correctement enregistrées."
+            }
+        },
+        "geocollectViewer":{
+            "images": {
+                "label": "Étiquette",
+                "size": "Taille",
+                "lastModified": "Dernière modification",
+                "modal": {
+                    "closeButtonText": "Proche"
+                }
+            }
+        },
+        "shapefile": {
+            "placeholder": "Faites glisser les fichiers ici ou cliquez pour sélectionner les fichiers vectoriels à importer. (Fichiers supportés: SHAPEFILES contenus dans les archives zip, KML / KMZ et GPX, systèmes de référence Epsg: 3003, Epsg: 4326)"
+        },
+        "layerProperties": {
+            "legenderror": "Légende non disponible à l'échelle actuelle"
+        },
+        "geoNetworkLink": "GeoNetwork"
+    }
+}
