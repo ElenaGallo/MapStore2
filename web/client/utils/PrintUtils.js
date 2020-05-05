@@ -12,8 +12,10 @@ const MapUtils = require('./MapUtils');
 const {optionsToVendorParams} = require('./VendorParamsUtils');
 const AnnotationsUtils = require("./AnnotationsUtils");
 const {colorToHexStr} = require("./ColorUtils");
+const { getFeature } = require('../api/WFS');
+const {generateEnvString} = require('./LayerLocalizationUtils');
 
-const {isArray} = require('lodash');
+const {isArray, filter, find} = require('lodash');
 
 const url = require('url');
 
@@ -31,6 +33,49 @@ const getGeomType = function(layer) {
  * @memberof utils
  */
 const PrintUtils = {
+    /**
+     * Preload data (e.g. WFS) before to sent it to the print tool.
+     *
+     */
+    preloadData: (spec) => {
+        // check if remote data
+        const wfsLayers = filter(spec.layers, {type: "wfs"});
+        if (wfsLayers.length > 0) {
+            // get data from WFS
+            return Promise.all(
+                wfsLayers.map(l =>
+                    getFeature(l.url, l.name, {
+                        outputFormat: "application/json",
+                        srsName: spec.projection,
+                        ...(optionsToVendorParams(l) || {})
+                    })
+                        .then(({data}) => ({
+                            id: l.id,
+                            geoJson: data
+                        }))
+                )
+            // set geoJson in layer's spec
+            ).then(replies => {
+                return {
+                    ...spec,
+                    layers: (spec.layers || []).map(l => {
+                        const layerData = find(replies, {id: l.id});
+                        if (l.type === "wfs" && layerData) {
+                            return {
+                                ...l,
+                                ...layerData
+
+                            };
+                        }
+                        return l;
+                    })
+                };
+            });
+        }
+        return new Promise((resolve) => {
+            resolve(spec);
+        });
+    },
     /**
      * Given a static resource, returns the resource's absolute
      * URL. Supports file paths with or without origin/protocol.
@@ -187,7 +232,7 @@ const PrintUtils = {
     },
     specCreators: {
         wms: {
-            map: (layer) => ({
+            map: (layer, spec) => ({
                 "baseURL": PrintUtils.normalizeUrl(layer.url) + '?',
                 "opacity": layer.opacity || 1.0,
                 "singleTile": false,
@@ -203,7 +248,8 @@ const PrintUtils = {
                     "TRANSPARENT": true,
                     "TILED": true,
                     "EXCEPTIONS": "application/vnd.ogc.se_inimage",
-                    "scaleMethod": "accurate"
+                    "scaleMethod": "accurate",
+                    "ENV": generateEnvString(spec.env)
                 }, layer.baseParams || {}, layer.params || {}, {
                     ...optionsToVendorParams({
                         layerFilter: layer.layerFilter,
@@ -225,6 +271,7 @@ const PrintUtils = {
                                     SERVICE: "WMS",
                                     REQUEST: "GetLegendGraphic",
                                     LAYER: layer.name,
+                                    LANGUAGE: spec.language || '',
                                     STYLE: layer.style || '',
                                     SCALE: spec.scale,
                                     height: spec.iconSize,
@@ -260,6 +307,27 @@ const PrintUtils = {
                 },
                 "EPSG:4326",
                 spec.projection)
+            }
+            )
+        },
+        wfs: {
+            map: (layer) => ({
+                type: 'Vector',
+                name: layer.name,
+                "opacity": layer.opacity || 1.0,
+                styleProperty: "ms_style",
+                styles: {
+                    1: PrintUtils.toOpenLayers2Style(layer, layer.style),
+                    "Polygon": PrintUtils.toOpenLayers2Style(layer, layer.style, "Polygon"),
+                    "LineString": PrintUtils.toOpenLayers2Style(layer, layer.style, "LineString"),
+                    "Point": PrintUtils.toOpenLayers2Style(layer, layer.style, "Point"),
+                    "FeatureCollection": PrintUtils.toOpenLayers2Style(layer, layer.style, "FeatureCollection")
+                },
+                // NOTE: data in this case have to be pre-loaded, in the correct projection
+                geoJson: layer.geoJson && {
+                    type: "FeatureCollection",
+                    features: layer.geoJson.features.map(f => ({ ...f, properties: { ...f.properties, ms_style: f && f.geometry && f.geometry.type && f.geometry.type.replace("Multi", "") || 1 } }))
+                }
             }
             )
         },
@@ -353,7 +421,7 @@ const PrintUtils = {
      * http://dev.openlayers.org/docs/files/OpenLayers/Feature/Vector-js.html#OpenLayers.Feature.Vector.OpenLayers.Feature.Vector.style
      */
     toOpenLayers2Style: function(layer, style, styleType) {
-        if (!style) {
+        if (!style || layer.styleName === "marker") {
             return PrintUtils.getOlDefaultStyle(layer, styleType);
         }
         // commented the available options.

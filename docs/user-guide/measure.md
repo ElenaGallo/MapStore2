@@ -74,3 +74,4 @@ Once a measure is drawn, it is possible to add it as an [Annotation](annotations
 <img src="../img/measure/add-as-annotation-ex.jpg" class="ms-docimage"/>
 
 From this step the creation process is the same described in the [Annotations section](annotations.md).
+

@@ -57,7 +57,6 @@ The information will be returned in the format chosen by the user. For exaple wi
 !!! warning
     This global settings could be overwritten by a layer-specific configuration (see [Feature Info Form](layer-settings.md#feature-info-form)).
 
-
 In addition to the layers information, the following are provided by the *Identify Tool*: 
 
 * The **point address**  through the *More Info* button  <img src="../img/button/more_info_icon.jpg" class="ms-docbutton"/>
@@ -88,7 +87,6 @@ An example of search with `Decimal` coordinates as follows:
 An example of search with `Aeronautical` coordinates as follows:
 
 <img src="../img/side-bar/areonautical-ex.gif" class="ms-docimage"  style="max-width:700px;"/>
-
 
 ### Identify Tool with more than one layer
 

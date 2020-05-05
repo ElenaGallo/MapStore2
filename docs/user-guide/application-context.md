@@ -95,6 +95,10 @@ Here the admin, in order to upload the plugin's package, can drag and drop it in
     * A plugin file with the extension code in `JavaScript`
 
     * All mandatory translations files in MapStore.
+
+!!! note
+    
+    [Here](https://github.com/geosolutions-it/mapstore-playground/tree/master/samples) is an example of extension to upload to MapStore
     
 Through the **Add** button <img src="../img/button/add_group_confirm_button.jpg" class="ms-docbutton"/> the plugin is inserted in the *Available Plugins* list. 
 
